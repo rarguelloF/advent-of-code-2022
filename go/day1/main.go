@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"log"
 	"sort"
+	"strconv"
+
+	"github.com/rarguelloF/advent-of-code-2022/input"
 )
 
 type Food struct {
@@ -64,8 +67,38 @@ func PartTwo(inventories []*ElfInventory) {
 	fmt.Printf("Part 2: %d\n", sumTopThree)
 }
 
+func readInput(name string) ([]*ElfInventory, error) {
+	inventory := make([]*ElfInventory, 0)
+	cur := newElfInventory()
+
+	processLine := func(line string) error {
+		if line == "" {
+			inventory = append(inventory, cur)
+			cur = newElfInventory()
+			return nil
+		}
+
+		calories, err := strconv.Atoi(line)
+		if err != nil {
+			return fmt.Errorf("found non-intenger value in input: %s", line)
+		}
+
+		cur.FoodItems = append(cur.FoodItems, &Food{
+			Calories: calories,
+		})
+
+		return nil
+	}
+
+	if err := input.ReadInput(name, processLine); err != nil {
+		return nil, fmt.Errorf("failed to read input: %w", err)
+	}
+
+	return inventory, nil
+}
+
 func main() {
-	inventories, err := readInput("../../inputs/day1.txt")
+	inventories, err := readInput("day1")
 	if err != nil {
 		log.Fatal(err)
 	}

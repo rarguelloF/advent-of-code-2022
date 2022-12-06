@@ -3,6 +3,9 @@ package main
 import (
 	"fmt"
 	"log"
+	"strings"
+
+	"github.com/rarguelloF/advent-of-code-2022/input"
 )
 
 type Play struct {
@@ -126,8 +129,34 @@ func PartTwo(strategies []*Strategy) {
 	fmt.Printf("Part 2: %d\n", sum)
 }
 
+func readInput(name string) ([]*Strategy, error) {
+	strategies := make([]*Strategy, 0)
+
+	processLine := func(line string) error {
+		values := strings.Split(line, " ")
+
+		if len(values) != 2 {
+			return fmt.Errorf("input line contains unknown format: %s", line)
+		}
+
+		s, err := NewStrategy(values[0], values[1])
+		if err != nil {
+			return fmt.Errorf("failed to parse strategy: %w", err)
+		}
+
+		strategies = append(strategies, s)
+		return nil
+	}
+
+	if err := input.ReadInput(name, processLine); err != nil {
+		return nil, fmt.Errorf("failed to read input: %w", err)
+	}
+
+	return strategies, nil
+}
+
 func main() {
-	strategies, err := readInput("../../inputs/day2.txt")
+	strategies, err := readInput("day2")
 	if err != nil {
 		log.Fatal(err)
 	}
