@@ -82,7 +82,7 @@ func readInput(inputName string) ([]*Rucksack, error) {
 		return nil
 	}
 
-	if err := input.ReadInput(inputName, processLine); err != nil {
+	if err := input.ReadLines(inputName, processLine); err != nil {
 		return nil, fmt.Errorf("failed to read input: %w", err)
 	}
 

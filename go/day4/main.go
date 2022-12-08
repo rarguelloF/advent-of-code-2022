@@ -105,7 +105,7 @@ func readInput(name string) ([]ElfPair, error) {
 		return nil
 	}
 
-	if err := input.ReadInput(name, processLine); err != nil {
+	if err := input.ReadLines(name, processLine); err != nil {
 		return nil, fmt.Errorf("failed to read input: %w", err)
 	}
 

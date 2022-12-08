@@ -202,7 +202,7 @@ func readInput(name string) (CrateStacks, []*Instruction, error) {
 		return processStack(line)
 	}
 
-	if err := input.ReadInput(name, processLine); err != nil {
+	if err := input.ReadLines(name, processLine); err != nil {
 		return nil, nil, fmt.Errorf("failed to read input: %w", err)
 	}
 
