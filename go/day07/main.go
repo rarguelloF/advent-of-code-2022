@@ -11,7 +11,7 @@ import (
 	"github.com/rarguelloF/advent-of-code-2022/input"
 )
 
-const inputName = "day7"
+const inputName = "day07"
 
 type File struct {
 	Name string

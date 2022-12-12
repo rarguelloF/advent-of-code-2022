@@ -9,6 +9,8 @@ import (
 	"github.com/rarguelloF/advent-of-code-2022/input"
 )
 
+const inputName = "day01"
+
 type Food struct {
 	Calories int
 }
@@ -67,7 +69,7 @@ func PartTwo(inventories []*ElfInventory) {
 	fmt.Printf("Part 2: %d\n", sumTopThree)
 }
 
-func readInput(name string) ([]*ElfInventory, error) {
+func readInput() ([]*ElfInventory, error) {
 	inventory := make([]*ElfInventory, 0)
 	cur := newElfInventory()
 
@@ -90,7 +92,7 @@ func readInput(name string) ([]*ElfInventory, error) {
 		return nil
 	}
 
-	if err := input.ReadLines(name, processLine); err != nil {
+	if err := input.ReadLines(inputName, processLine); err != nil {
 		return nil, fmt.Errorf("failed to read input: %w", err)
 	}
 
@@ -98,7 +100,7 @@ func readInput(name string) ([]*ElfInventory, error) {
 }
 
 func main() {
-	inventories, err := readInput("day1")
+	inventories, err := readInput()
 	if err != nil {
 		log.Fatal(err)
 	}

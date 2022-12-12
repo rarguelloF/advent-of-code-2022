@@ -8,6 +8,8 @@ import (
 	"github.com/rarguelloF/advent-of-code-2022/input"
 )
 
+const inputName = "day03"
+
 type Rucksack struct {
 	AllItems     map[rune]int
 	Compartments [2]map[rune]int
@@ -51,7 +53,7 @@ func findCommonItem(group [3]*Rucksack) (rune, error) {
 	return 0, errors.New("not found")
 }
 
-func readInput(inputName string) ([]*Rucksack, error) {
+func readInput() ([]*Rucksack, error) {
 	rucksacks := make([]*Rucksack, 0)
 
 	processLine := func(line string) error {
@@ -134,7 +136,7 @@ func PartTwo(rucksacks []*Rucksack) {
 }
 
 func main() {
-	rucksacks, err := readInput("day3")
+	rucksacks, err := readInput()
 	if err != nil {
 		log.Fatal(err)
 	}

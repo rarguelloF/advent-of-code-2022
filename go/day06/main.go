@@ -7,7 +7,7 @@ import (
 	"github.com/rarguelloF/advent-of-code-2022/input"
 )
 
-const inputName = "day6"
+const inputName = "day06"
 
 func isUniqueChars(foundChars map[rune]int) bool {
 	for _, count := range foundChars {

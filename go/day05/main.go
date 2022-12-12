@@ -9,6 +9,8 @@ import (
 	"github.com/rarguelloF/advent-of-code-2022/input"
 )
 
+const inputName = "day05"
+
 type Stack []string
 
 func (s *Stack) IsEmpty() bool {
@@ -128,7 +130,7 @@ func PartTwo(stacks CrateStacks, instructions []*Instruction) {
 	fmt.Printf("Part 2: %s\n", topCrates)
 }
 
-func readInput(name string) (CrateStacks, []*Instruction, error) {
+func readInput() (CrateStacks, []*Instruction, error) {
 	stacks := make(CrateStacks, 0)
 	instructions := make([]*Instruction, 0)
 
@@ -202,7 +204,7 @@ func readInput(name string) (CrateStacks, []*Instruction, error) {
 		return processStack(line)
 	}
 
-	if err := input.ReadLines(name, processLine); err != nil {
+	if err := input.ReadLines(inputName, processLine); err != nil {
 		return nil, nil, fmt.Errorf("failed to read input: %w", err)
 	}
 
@@ -210,7 +212,7 @@ func readInput(name string) (CrateStacks, []*Instruction, error) {
 }
 
 func main() {
-	stacks, instructions, err := readInput("day5")
+	stacks, instructions, err := readInput()
 	if err != nil {
 		log.Fatal(err)
 	}

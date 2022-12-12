@@ -9,6 +9,8 @@ import (
 	"github.com/rarguelloF/advent-of-code-2022/input"
 )
 
+const inputName = "day04"
+
 type Range [2]int
 
 func (r Range) Size() int {
@@ -74,7 +76,7 @@ func PartTwo(pairs []ElfPair) {
 	fmt.Printf("Part 2: %d\n", sum)
 }
 
-func readInput(name string) ([]ElfPair, error) {
+func readInput() ([]ElfPair, error) {
 	pairs := make([]ElfPair, 0)
 
 	processLine := func(line string) error {
@@ -105,7 +107,7 @@ func readInput(name string) ([]ElfPair, error) {
 		return nil
 	}
 
-	if err := input.ReadLines(name, processLine); err != nil {
+	if err := input.ReadLines(inputName, processLine); err != nil {
 		return nil, fmt.Errorf("failed to read input: %w", err)
 	}
 
@@ -113,7 +115,7 @@ func readInput(name string) ([]ElfPair, error) {
 }
 
 func main() {
-	pairs, err := readInput("day4")
+	pairs, err := readInput()
 	if err != nil {
 		log.Fatal(err)
 	}

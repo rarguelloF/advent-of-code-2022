@@ -8,7 +8,7 @@ import (
 	"github.com/rarguelloF/advent-of-code-2022/input"
 )
 
-const inputName = "day8"
+const inputName = "day08"
 
 type Direction int
 

@@ -8,6 +8,8 @@ import (
 	"github.com/rarguelloF/advent-of-code-2022/input"
 )
 
+const inputName = "day02"
+
 type Play struct {
 	ID      PlayID
 	Points  int
@@ -129,7 +131,7 @@ func PartTwo(strategies []*Strategy) {
 	fmt.Printf("Part 2: %d\n", sum)
 }
 
-func readInput(name string) ([]*Strategy, error) {
+func readInput() ([]*Strategy, error) {
 	strategies := make([]*Strategy, 0)
 
 	processLine := func(line string) error {
@@ -148,7 +150,7 @@ func readInput(name string) ([]*Strategy, error) {
 		return nil
 	}
 
-	if err := input.ReadLines(name, processLine); err != nil {
+	if err := input.ReadLines(inputName, processLine); err != nil {
 		return nil, fmt.Errorf("failed to read input: %w", err)
 	}
 
@@ -156,7 +158,7 @@ func readInput(name string) ([]*Strategy, error) {
 }
 
 func main() {
-	strategies, err := readInput("day2")
+	strategies, err := readInput()
 	if err != nil {
 		log.Fatal(err)
 	}
