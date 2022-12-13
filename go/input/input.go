@@ -46,7 +46,7 @@ func ReadLines(name string, processLine ProcessLineFunc) error {
 	for scanner.Scan() {
 		line := scanner.Text()
 		if err := processLine(line); err != nil {
-			return fmt.Errorf("failed to process line: %w", err)
+			return fmt.Errorf("failed to process line \"%s\": %w", line, err)
 		}
 	}
 
